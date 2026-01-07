@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Clan Xonex Community</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="gallery-preview" id="galleryPreview" onclick="closePreview()">
+ <img id="previewImg">
+ <div class="gallery-counter" id="galleryCounter"></div>
+</div>
+<div class="bg-glow"></div>
+
+<div class="container">
+
+<header class="hero">
+
+  <h1>Clan Xonex</h1>
+ 
+  <div class="clan-icon">
+    <img src="xonex.jpg">
+  </div>
+<p>Komunitas Anime • Otaku • Creator TikTok</p>
+
+
+
+  
+</header>
+
+
+<div class="chat-card">
+  <div class="chat-header">
+     <b id="botName">~Fenxdz Senpai</b>
+    <div class="status">online</div></div>
+  <div class="chat-body">
+     <div class="msg user">P</div
+      <div class="msg ai">uy</div>
+    <div class="msg ai">Kenapa?</div>
+    <div class="msg user">OpenMem Gak?</div>
+     <div class="msg ai">Open Knp Emng?</div>
+  <div class="msg user">Gw mau Join Bisa gak?</div>
+<div class="msg ai">Bisalah</div>
+<div class="msg user">Gas lah</div>
+<div class="msg ai">Nih Seleksi Dulu<p><a href="https://chat.whatsapp.com/GyjDzzknAuKCWv4P3Dv80Y" class="join-wa">
+    <i class="fa-brands fa-whatsapp"></i> Bergabung ke grup 
+  </a></p></div>
+  
+  </div>
+</div>
+
+
+<section class="card">
+  <h2>Hashtag TikTok</h2>
+  <div class="tags">
+    <span>#clanxonex</span>
+    <span>#animeindo</span>
+    <span>#wibunation</span>
+  </div>
+</section>
+
+
+<section class="card">
+  <h2>Akun TikTok</h2>
+  <div class="social-list">
+    <div class="social-item">
+      <i class="fa-brands fa-tiktok"></i>
+      <a href="https://www.tiktok.com/@xonexclan" target="_blank">@xonexclan</a>
+    </div>
+    <div class="social-item">
+      <i class="fa-brands fa-tiktok"></i>
+      <a href="https://www.tiktok.com/@fenxdz" target="_blank">@fenxdz </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="card">
+  <h2>Website Anime</h2>
+  <div class="website-list">
+    <div class="website-item">
+      <i class="fa-solid fa-globe"></i>
+      <a href="https://samehadaku.email" target="_blank">samehadaku</a>
+    </div>
+    <div class="website-item">
+      <i class="fa-solid fa-globe"></i>
+      <a href="https://oploverz.bz" target="_blank">oploverz</a>
+    </div>
+    <div class="website-item">
+      <i class="fa-solid fa-globe"></i>
+      <a href="https://kusonime.com" target="_blank">kusonime</a>
+    </div>
+  </div>
+  <h4>Waifu Owner</h4>
+<div class="char-gallery">
+ <div class="gallery-item">
+  <img src="ryoo6.jpg">
+ </div>
+ <div class="gallery-item">
+  <img src="ryoo5.jpg">
+ </div>
+ <div class="gallery-item">
+  <img src="ryoo4.jpg">
+ </div>
+</section>
+
+</div>
+ <div class="toast" id="toast">Selamat datang di Clan Xonex</div>
+ 
+
+ 
+<script>
+const toast=document.getElementById("toast");
+setTimeout(()=>toast.classList.add("show"),1000);
+setTimeout(()=>toast.classList.remove("show"),4000);
+let galleryImages=[]
+let currentIndex=0
+
+document.querySelectorAll(".char-gallery").forEach(g=>{
+ const imgs=[...g.querySelectorAll("img")]
+ imgs.forEach((img,i)=>{
+  img.onclick=()=>{
+   galleryImages=imgs.map(x=>x.src)
+   currentIndex=i
+   openGallery()
+  }
+ })
+})
+
+function openGallery(){
+ previewImg.src=galleryImages[currentIndex]
+ galleryCounter.textContent=`${currentIndex+1} / ${galleryImages.length}`
+ galleryPreview.classList.add("active")
+}
+
+function closePreview(){
+ galleryPreview.classList.remove("active")
+}
+
+function nextImg(){
+ currentIndex=(currentIndex+1)%galleryImages.length
+ openGallery()
+}
+
+function prevImg(){
+ currentIndex=(currentIndex-1+galleryImages.length)%galleryImages.length
+ openGallery()
+}
+
+/* swipe */
+let startX=0
+previewImg.addEventListener("touchstart",e=>{
+ startX=e.touches[0].clientX
+})
+previewImg.addEventListener("touchend",e=>{
+ const endX=e.changedTouches[0].clientX
+ if(startX-endX>40) nextImg()
+ if(endX-startX>40) prevImg()
+})
+</script>
+
+</body>
+</html>

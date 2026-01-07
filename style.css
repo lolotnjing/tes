@@ -1,0 +1,420 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:system-ui, sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+  min-height:100vh;
+}
+
+.bg-glow{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top left,#2563eb33,transparent 40%),
+    radial-gradient(circle at bottom right,#9333ea33,transparent 40%);
+  z-index:-1;
+}
+
+.container{
+  max-width:480px;
+  margin:auto;
+  padding:16px;
+}
+
+
+.hero{
+  text-align:center;
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-size:34px;
+  background:linear-gradient(135deg,#3b82f6,#a855f7);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.clan-icon{
+  width:115px;
+  height:115px;
+  margin:12px auto;
+  border-radius:16%;
+  ruby-position: 88px;
+  overflow: hidden;
+  border:3px solid #3b82f6;
+  box-shadow:0 0 35px #2563ebaa;
+}
+
+.clan-icon img{
+  width:100%;
+  height:100%;
+  rotate:122%;
+  offset-rotate:12%;
+  motion-rotation:77%;
+  object-fit:cover;
+}
+
+.hero p{
+  font-size:13px;
+  color:#94a3b8;
+  margin-bottom:14px;
+}
+
+.join-wa{
+  display:inline-flex;
+  gap:8px;
+  padding:12px 20px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+}
+
+
+.chat-card{
+  border:1px solid #1e293b;
+  border-radius:20px;
+  height:230px;
+  display:flex;
+  flex-direction:column;
+  margin-bottom:18px;
+}
+
+.chat-header{
+  padding:12px;
+  border-bottom:1px solid #1e293b;
+  font-size:13px;
+  color:#93c5fd;
+}
+
+.chat-body{
+ flex:1;
+ padding:12px;
+ overflow-y:auto;
+ display:flex;
+ flex-direction:column;
+ gap:14px;
+}
+
+
+.msg{
+  max-width:85%;
+  padding:11px 15px;
+  border-radius:16px;
+  font-size:13px;
+}
+
+.msg.ai{
+  background:#0f172a;
+  border:1px solid #1e293b;
+}
+
+.msg.user{
+  background:linear-gradient(135deg,#2563eb,#3b82f6);
+  color:white;
+  align-self:flex-end;
+}
+
+
+.photo-card{
+  background:#020617;
+  border:1px solid #1e293b;
+  border-radius:14px;
+  padding:6px;
+  margin-bottom:12px;
+}
+
+.photo-card h2{
+  font-size:15px;
+  margin-bottom:10px;
+  color:#60a5fa;
+}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+}
+
+.photo-grid img{
+  width:100%;
+  height:90px;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid #1e293b;
+}
+
+
+.card{
+  background:#020617;
+  border:1px solid #1e293b;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:14px;
+}
+
+.card h2{
+  font-size:15px;
+  margin-bottom:10px;
+  color:#60a5fa;
+}
+
+.tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.tags span{
+  background:#1e293b;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+}
+
+
+.social-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.social-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#0f172a;
+  border:1px solid #1e293b;
+  padding:12px;
+  border-radius:14px;
+  font-size:13px;
+}
+
+.social-item i{
+  color: White;
+  font-size:18px;
+}
+
+
+.website-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.website-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#0f172a;
+  border:1px solid #1e293b;
+  padding:12px;
+  border-radius:14px;
+  font-size:13px;
+}
+
+.website-item i{
+  color: White;
+}
+
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:#020617;
+  border:1px solid #1e293b;
+  padding:12px 18px;
+  border-radius:14px;
+  font-size:13px;
+  opacity:0;
+  transition:.4s;
+  z-index:99;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+.char-gallery{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:8px;
+ margin:10px 0;
+}
+
+.gallery-item{
+ position:relative;
+ border-radius:14px;
+ overflow:hidden;
+ cursor:pointer;
+}
+
+.gallery-item img{
+ width:100%;
+ aspect-ratio:9/16;
+ object-fit:cover;
+ display:block;
+ border-radius:14px;
+ box-shadow:0 8px 18px #020617aa;
+ transition:.3s;
+}
+
+/* overlay */
+.gallery-item::after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(
+  to bottom,
+  transparent,
+  rgba(0,0,0,.65)
+ );
+ display:flex;
+ align-items:flex-end;
+ justify-content:flex-end;
+ padding:8px;
+ font-size:14px;
+ color:white;
+ opacity:0;
+ transition:.25s;
+}
+
+.gallery-item:hover::after,
+.gallery-item:active::after{
+ opacity:1;
+}
+
+/* shine */
+.gallery-item::before{
+ content:"";
+ position:absolute;
+ inset:-40%;
+ background:linear-gradient(
+  120deg,
+  transparent,
+  rgba(255,255,255,.18),
+  transparent
+ );
+ transform:translateX(-100%);
+ transition:.6s;
+}
+
+.gallery-item:hover::before{
+ transform:translateX(100%);
+}
+
+.gallery-item:hover img{
+ transform:scale(1.08);
+}
+h4 {
+  font-size: 12px;
+  padding: 7px;
+  
+  color: #3b82f6;
+}
+.status{
+ position:relative;
+ padding-left:18px;
+ font-weight:500;
+ color:#22c55e;
+ text-shadow:0 0 8px #22c55e55;
+}
+
+/* DOT */
+.status::before{
+ content:"";
+ position:absolute;
+ left:0;
+ top:50%;
+ width:8px;
+ height:8px;
+ background:#22c55e;
+ border-radius:50%;
+ transform:translateY(-50%);
+ box-shadow:0 0 10px #22c55e;
+ z-index:2;
+}
+
+/* PULSE (CENTER KE DOT) */
+.status::after{
+ content:"";
+ position:absolute;
+ left:4px;              /* ⬅ SETENGAH DARI WIDTH DOT */
+ top:50%;
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ background:transparent;
+ transform:translate(-50%,-50%);
+ box-shadow:0 0 0 0 #22c55e66;
+ animation:onlinePulse 1.8s infinite;
+ z-index:1;
+}
+
+@keyframes onlinePulse{
+ 0%{
+  box-shadow:0 0 0 0 #22c55e66;
+ }
+ 70%{
+  box-shadow:0 0 0 10px transparent;
+ }
+ 100%{
+  box-shadow:0 0 0 0 transparent;
+ }
+}
+#botAvatar{
+ position:relative;
+ z-index:1;
+}
+
+/* ring warna */
+#botAvatar::before{
+ content:"";
+ position:absolute;
+ inset:-3px;
+ border-radius:50%;
+ background:
+  conic-gradient(
+   #22c55e,
+   #3b82f6,
+   #9333ea,
+   #ec4899,
+   #22c55e
+  );
+ z-index:-1;
+ animation:spinAura 6s linear infinite;
+}
+
+/* glow pulse */
+#botAvatar::after{
+ content:"";
+ position:absolute;
+ inset:-8px;
+ border-radius:50%;
+ background:radial-gradient(circle,#3b82f666,transparent 70%);
+ z-index:-2;
+ animation:pulseAura 2.6s ease-out infinite;
+}
+
+@keyframes spinAura{
+ from{transform:rotate(0deg)}
+ to{transform:rotate(360deg)}
+}
+@keyframes pulseAura{
+ 0%{transform:scale(.85);opacity:.7}
+ 70%{transform:scale(1.5);opacity:0}
+ 100%{opacity:0}
+}
+
+#botAvatar,
+#botName{
+ transition:.25s;
+}
